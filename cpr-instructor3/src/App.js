@@ -4,6 +4,7 @@ import Home from './Home';
 import CourseGallery from './CourseGallery';
 import Navbar from './Navbar';
 import './App.css';
+import Registration from './Registration';
 
 function App() {
   const images = [
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/CourseGallery" element={<CourseGallery images={images} />} />
+          <Route path="/Registration" element={<Registration />} />
         </Routes>
       </div>
     </Router>
@@ -26,4 +28,3 @@ function App() {
 }
 
 export default App;
-
