@@ -1,46 +1,58 @@
-import React, { useState } from 'react';
-import Stripe from 'stripe';
+import React, { useState } from "react";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-const stripe = new Stripe('51N2HfXFlfEyi28JnyHMGgpD55HJhn5a77JfrqsvEc2IYmbdMNljkfvb97ywRBZojc0jOPxmOC4mP0FAG1NwijODg00O57YLvii', { apiVersion: '2020-08-27' });
+const PaymentForm = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [error, setError] = useState(null);
+  const [cardComplete, setCardComplete] = useState(false);
+  const [processing, setProcessing] = useState(false);
 
-const Payment = () => {
-  const [paymentResult, setPaymentResult] = useState(null);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!stripe || !elements) {
+      return;
+    }
 
-  const handlePayment = async () => {
-    try {
-      const token = await stripe.tokens.create({
-        card: {
-          number: '4242424242424242',
-          exp_month: 12,
-          exp_year: 2023,
-          cvc: '123',
-        },
-      });
+    setProcessing(true);
 
-      const charge = await stripe.charges.create({
-        amount: 1000,
-        currency: 'usd',
-        description: 'Example Charge',
-        source: token.id,
-      });
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
+    });
 
-      setPaymentResult(charge);
-    } catch (error) {
-      console.error(error);
+    if (error) {
+      setError(error.message);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      console.log(paymentMethod);
     }
   };
 
+  const handleCardChange = (event) => {
+    setCardComplete(event.complete);
+    setError(event.error ? event.error.message : null);
+  };
+
   return (
-    <div>
-      <h2>Payment System</h2>
-      <button onClick={handlePayment}>Make a Payment</button>
-      {paymentResult && (
-        <p>
-          Payment Successful! Charge ID: {paymentResult.id} Amount: {paymentResult.amount}
-        </p>
-      )}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>
+          Card details
+          <CardElement onChange={handleCardChange} />
+        </label>
+      </div>
+      {error && <div className="error">{error}</div>}
+      <button
+        type="submit"
+        disabled={processing || !stripe || !cardComplete}
+      >
+        {processing ? "Processing..." : "Pay"}
+      </button>
+    </form>
   );
 };
 
-export default Payment;
+export default PaymentForm;

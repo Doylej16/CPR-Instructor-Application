@@ -5,8 +5,14 @@ import CourseGallery from './CourseGallery';
 import Navbar from './Navbar';
 import './App.css';
 import Registration from './Registration';
+import PaymentForm from './Stripe';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('51N2HfXFlfEyi28JnyHMGgpD55HJhn5a77JfrqsvEc2IYmbdMNljkfvb97ywRBZojc0jOPxmOC4mP0FAG1NwijODg00O57YLvii');
 
 function App() {
+
   const images = [
     { src: 'image1.jpg', alt: 'Image 1', certificate: 'certificate1.jpg' },
     { src: 'image2.jpg', alt: 'Image 2', certificate: 'certificate2.jpg' },
@@ -21,6 +27,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/CourseGallery" element={<CourseGallery images={images} />} />
           <Route path="/Registration" element={<Registration />} />
+          <Route
+            path="/Stripe"
+            element={
+              <Elements stripe={stripePromise}>
+                <PaymentForm />
+              </Elements>
+            }
+          />
         </Routes>
       </div>
     </Router>
