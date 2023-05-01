@@ -1,6 +1,7 @@
 import React from 'react';
 import News from './News';
 import CourseList from './CourseList';
+import PaymentButton from './PaymentButton';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <p>Learn life-saving skills and get certified today!</p>
       <News />
       <CourseList />
+      <PaymentButton />
     </div>
   );
 };
