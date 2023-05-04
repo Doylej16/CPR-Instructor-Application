@@ -37,17 +37,22 @@ const PaymentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
+    <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
+      <div className="mb-4">
+        <label className="block mb-2 font-bold text-gray-700" htmlFor="card-details">
           Card details
-          <CardElement onChange={handleCardChange} />
         </label>
+        <CardElement 
+          id="card-details"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          onChange={handleCardChange} 
+        />
       </div>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="mb-4 text-red-500">{error}</div>}
       <button
         type="submit"
         disabled={processing || !stripe || !cardComplete}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         {processing ? "Processing..." : "Pay"}
       </button>
@@ -56,3 +61,4 @@ const PaymentForm = () => {
 };
 
 export default PaymentForm;
+

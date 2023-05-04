@@ -27,14 +27,16 @@ const News = () => {
   };
 
   return (
-    <div>
+    <div className="news-container">
       <h2>Latest News</h2>
       {articles.length > 0 && (
-        <div>
-          <h3>{articles[currentArticleIndex].title}</h3>
-          <p>{articles[currentArticleIndex].description}</p>
-          <button onClick={previousArticle} disabled={currentArticleIndex === 0}>Previous Article</button>
-          <button onClick={nextArticle} disabled={currentArticleIndex === articles.length - 1}>Next Article</button>
+        <div className="article-container">
+          <h3 className="article-title">{articles[currentArticleIndex].title}</h3>
+          <p className="article-description">{articles[currentArticleIndex].description}</p>
+          <div className="button-container">
+            <button className="previous-button" onClick={previousArticle} disabled={currentArticleIndex === 0}>Previous Article</button>
+            <button className="next-button" onClick={nextArticle} disabled={currentArticleIndex === articles.length - 1}>Next Article</button>
+          </div>
         </div>
       )}
     </div>
@@ -42,3 +44,4 @@ const News = () => {
 };
 
 export default News;
+
