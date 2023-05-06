@@ -14,10 +14,11 @@ const stripePromise = loadStripe('51N2HfXFlfEyi28JnyHMGgpD55HJhn5a77JfrqsvEc2IYm
 function App() {
 
   const images = [
-    { src: 'image1.jpg', alt: 'Image 1', certificate: 'certificate1.jpg' },
-    { src: 'image2.jpg', alt: 'Image 2', certificate: 'certificate2.jpg' },
-    { src: 'image3.jpg', alt: 'Image 3', certificate: 'certificate3.jpg' },
+    { src: 'cprImage1.jpg', alt: 'Image 1', certificate: 'certificate1.jpg' },
+    { src: 'cprImage2.jpg', alt: 'Image 2', certificate: 'certificate2.jpg' },
+    { src: 'Certificate.jpg', alt: 'Image 3', certificate: 'certificate3.jpg' },
   ];
+  
 
   return (
     <Router>
