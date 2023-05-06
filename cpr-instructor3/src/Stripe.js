@@ -16,6 +16,7 @@ const PaymentForm = () => {
 
     setProcessing(true);
 
+    // Create a payment method using the card information from CardElement
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -39,9 +40,11 @@ const PaymentForm = () => {
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
       <div className="mb-4">
+        {/* Card details label */}
         <label className="block mb-2 font-bold text-gray-700" htmlFor="card-details">
           Card details
         </label>
+        {/* CardElement component from Stripe */}
         <CardElement 
           id="card-details"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -54,6 +57,7 @@ const PaymentForm = () => {
         disabled={processing || !stripe || !cardComplete}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
+        {/* Button label updates based on processing state */}
         {processing ? "Processing..." : "Pay"}
       </button>
     </form>
@@ -61,4 +65,3 @@ const PaymentForm = () => {
 };
 
 export default PaymentForm;
-

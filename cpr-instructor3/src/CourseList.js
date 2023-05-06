@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CourseList = () => {
   const courses = [
@@ -32,9 +33,11 @@ const CourseList = () => {
             <p className="text-gray-700 mb-2">{course.description}</p>
             <p className="text-gray-700 mb-2">Duration: {course.duration}</p>
             <p className="text-gray-700 mb-4">Cost: {course.cost}</p>
-            <button className="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full">
-              Register Now
-            </button>
+            <Link to="/Registration">
+              <button className="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full">
+                Register Now
+              </button>
+            </Link>
           </li>
         ))}
       </ul>
