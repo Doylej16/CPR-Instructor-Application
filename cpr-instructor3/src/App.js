@@ -9,16 +9,14 @@ import PaymentForm from './Stripe';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('51N2HfXFlfEyi28JnyHMGgpD55HJhn5a77JfrqsvEc2IYmbdMNljkfvb97ywRBZojc0jOPxmOC4mP0FAG1NwijODg00O57YLvii');
+const stripePromise = loadStripe('51N2HfXFlfEyi28JnxloQZvwcyiYTdIDRAuRTDKLkvYrekLsBKYWU431BAyrLb2LScT64um8SvqF8ShWfv8ve6ZSd00AQ0wblPT');
 
 function App() {
-
   const images = [
     { src: 'cprImage1.jpg', alt: 'Image 1', certificate: 'certificate1.jpg' },
     { src: 'cprImage2.jpg', alt: 'Image 2', certificate: 'certificate2.jpg' },
     { src: 'Certificate.jpg', alt: 'Image 3', certificate: 'certificate3.jpg' },
   ];
-  
 
   return (
     <Router>
@@ -43,3 +41,4 @@ function App() {
 }
 
 export default App;
+

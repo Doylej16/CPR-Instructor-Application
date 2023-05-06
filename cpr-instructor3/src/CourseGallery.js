@@ -39,7 +39,7 @@ function CourseGallery(props) {
       </div>
       <div className="flex justify-center">
         {currentIndex === props.images.length - 1 && (
-          <img src={props.images[currentIndex].certificate} alt="Certificate" className="max-w-full" />
+           <img src={process.env.PUBLIC_URL + "/Certificate.jpg"} alt="Certificate" className="max-w-full" />
         )}
       </div>
     </div>
