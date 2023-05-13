@@ -28,6 +28,12 @@ The CPR Instructor Application is a web application built using React, Redux, Re
 - React-Dom
 -React-Router-Dom
 
+## Screenshots
+![Screenshot 1](./cpr-instructor3/public/screenshot1.png)
+![Screenshot 2](./cpr-instructor3/public/screenshot2.png)
+![Screenshot 3](./cpr-instructor3/public/screenshot3.png)
+![Screenshot 4](./cpr-instructor3/public/screenshot4.png)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
